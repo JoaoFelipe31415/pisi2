@@ -1,6 +1,5 @@
 import tsplib95
 import numpy as np
-import os
 import string
 
 def gerar_casos_berlin52(instancia_base, lista_num_pontos, tamanho_grid=50):
@@ -20,13 +19,11 @@ def gerar_casos_berlin52(instancia_base, lista_num_pontos, tamanho_grid=50):
         
         nos_selecionados = list(instancia_base.get_nodes())[:num_pontos]
         coords_originais = np.array([instancia_base.node_coords[n] for n in nos_selecionados])
-        
-
+       
         min_coords = coords_originais.min(axis=0)
         max_coords = coords_originais.max(axis=0)
         range_coords = max_coords - min_coords
-        range_coords[range_coords == 0] = 1 
-
+        range_coords[range_coords == 0] = 1
         coords_normalizadas = (coords_originais - min_coords) / range_coords * (tamanho_grid - 1)
         coords_grid = np.round(coords_normalizadas).astype(int)
 
@@ -50,6 +47,7 @@ def gerar_casos_berlin52(instancia_base, lista_num_pontos, tamanho_grid=50):
                 if not found_spot:
                      print(f"Aviso: Colisão de coordenadas no grid para o ponto {rotulo}. Ponto não adicionado.")
 
+
         nome_arquivo_saida = f"caso_teste_berlin52_{num_pontos}pts.txt"
         
         with open(nome_arquivo_saida, 'w') as f:
@@ -57,3 +55,21 @@ def gerar_casos_berlin52(instancia_base, lista_num_pontos, tamanho_grid=50):
             for linha in matriz:
                 f.write(" ".join(linha) + "\n")
 
+
+# --- Bloco Principal de Execução ---
+if __name__ == "__main__":
+    try:
+        # Carrega a instância base uma única vez
+        problema_berlin52 = tsplib95.load('berlin52.tsp')
+        
+        # Define quantos pontos cada caso de teste terá
+        # O caso com 10 pontos já será perceptivelmente lento para a força bruta
+        pontos_para_testar = [6, 7, 8, 9, 10] 
+        
+        gerar_casos_berlin52(problema_berlin52, pontos_para_testar,20)
+        
+        print("\nTodos os casos de teste foram gerados.")
+
+    except Exception as e:
+        print(f"Ocorreu um erro fatal: {e}")
+        print("Verifique se a biblioteca 'tsplib95' está instalada (pip install tsplib95)")

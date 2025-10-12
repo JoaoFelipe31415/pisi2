@@ -1,6 +1,8 @@
 import itertools
 import time
 import os
+
+from tests_cases.build_tests_cases import gerar_casos_berlin52
 def ler_matriz_de_arquivo(nome_arquivo):
     caminho = os.path.join(os.path.dirname(__file__), '..','..', 'data', nome_arquivo)
     matriz = []
@@ -83,7 +85,7 @@ def resolver_flyfood_forca_bruta(coordenadas):
     return melhor_rota, min_distancia
 
 if __name__ == "__main__":
-  
+    
     _, _, matriz = ler_matriz_de_arquivo('input.txt')
     
     if matriz:
