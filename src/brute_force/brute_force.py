@@ -84,7 +84,7 @@ def resolver_flyfood_forca_bruta(coordenadas):
 
 if __name__ == "__main__":
   
-    _, _, matriz = ler_matriz_de_arquivo('input.txt')
+    _, _, matriz = ler_matriz_de_arquivo('caso_teste_berlin52_6pts.txt')
     
     if matriz:
         pontos_coordenadas = encontrar_coordenadas(matriz)
