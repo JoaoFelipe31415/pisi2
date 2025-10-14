@@ -1,0 +1,29 @@
+# Ignorar variáveis de ambiente
+.env
+
+# Ignorar dependências
+venv/
+.env/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.egg-info/
+
+# Ignorar logs
+*.log
+
+# Ignorar configurações locais
+.vscode/
+.idea/
+
+# Ignorar dados temporários
+data/
+tmp/
+.DS_Store
+
+# Ignorar resultados de testes
+tests_cases/__pycache__/
+.coverage
+htmlcov/
+.cache/
