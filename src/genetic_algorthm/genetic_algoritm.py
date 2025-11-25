@@ -39,6 +39,15 @@ def calcular_distancia_manhattan(coord1, coord2):
     r2, c2 = coord2
     return abs(r1 - r2) + abs(c1 - c2)
 
+def reduzir_matriz_distância(dist_matrix):
+    """Armazena apenas os valores acima da diagonal principal da matriz de distâncias."""
+    n = dist_matrix.shape[0]
+    reduced_matrix = []
+    for i in range(n):
+        for j in range(i + 1, n):
+            reduced_matrix.append(dist_matrix[i, j])
+    return np.array(reduced_matrix)
+
 #  FUNÇÕES DE INTERFACE E CÁLCULO PARA O AG 
 
 def construir_matriz_distancias(coordenadas):
@@ -63,12 +72,26 @@ def construir_matriz_distancias(coordenadas):
     return dist_matrix, nomes_pontos, map_idx
 
 def calcular_custo_rota(rota, dist_matrix, map_idx):
-    """Calcula o custo total de uma rota usando a matriz de distâncias pré-calculada."""
+    """Calcula o custo total de uma rota usando a matriz de distâncias reduzida (apenas triângulo superior)."""
     custo = 0
+    n = len(map_idx)
+    
     for i in range(len(rota)):
         idx1 = map_idx[rota[i]]
         idx2 = map_idx[rota[(i + 1) % len(rota)]]
-        custo += dist_matrix[idx1, idx2]
+        
+        if idx1 == idx2:
+            continue
+            
+        # Garante que idx1 < idx2 para acessar o triângulo superior
+        if idx1 > idx2:
+            idx1, idx2 = idx2, idx1
+            
+        # Fórmula para mapear (i, j) para índice do vetor 1D (sendo i < j)
+        # k = n*i - i*(i+1)/2 + j - i - 1
+        k = int(n * idx1 - (idx1 * (idx1 + 1) // 2) + idx2 - idx1 - 1)
+        
+        custo += dist_matrix[k]
     return custo
 
 # OPERADORES GENÉTICOS 
@@ -192,7 +215,8 @@ def resolver_flyfood_com_ag(nome_arquivo, geracoes, tam_pop, taxa_elite, taxa_mu
     coordenadas = encontrar_coordenadas(matriz)
     
     # Passo 2: Construir a matriz de distâncias
-    dist_matrix, nomes_pontos, map_idx = construir_matriz_distancias(coordenadas)
+    dist_matrix_full, nomes_pontos, map_idx = construir_matriz_distancias(coordenadas)
+    dist_matrix = reduzir_matriz_distância(dist_matrix_full)
     
     # Passo 3: Executar o AG
     populacao = criar_populacao_inicial(nomes_pontos, tam_pop)
