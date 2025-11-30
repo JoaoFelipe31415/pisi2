@@ -1,10 +1,11 @@
 import itertools
 import time
-from tests_cases.build_tests_cases import gerar_casos_berlin52
+from tests_cases.build_tests_cases import gerar_casos_testes_berlim52
 from src.utils.utilidade import calcular_distancia_manhattan, encontrar_coordenadas, ler_matriz_de_arquivo
 
 
 def resolver_flyfood_forca_bruta(coordenadas):
+
     """
     Recebe as coordenadas dos pontos e encontra a melhor rota via força bruta.
     """
@@ -52,8 +53,10 @@ def resolver_flyfood_forca_bruta(coordenadas):
     return melhor_rota, min_distancia
 
 if __name__ == "__main__":
+    valor = 12
     
-    _, _, matriz = ler_matriz_de_arquivo('input.txt')
+    print(f"\n--- Resolvendo caso de teste com {valor} pontos ---")
+    _, _, matriz = ler_matriz_de_arquivo(f'caso_teste_berlin52_{valor}pts.txt')
     
     if matriz:
         pontos_coordenadas = encontrar_coordenadas(matriz)

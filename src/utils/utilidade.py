@@ -4,12 +4,12 @@ def ler_matriz_de_arquivo(nome_arquivo):
     caminho = os.path.join(os.path.dirname(__file__), '..','..', 'data', nome_arquivo)
     matriz = []
     with open(caminho, 'r') as f:
-        primeira_linha = f.readline()
+        primeira_linha = f.readline().split()
         M = int(primeira_linha[0])
         N = int(primeira_linha[1])
         
         for _ in range(M):
-            linha_arquivo = f.readline()
+            linha_arquivo = f.readline().split()
             aux = []
             for caracter in linha_arquivo:
                 if caracter == "\n":

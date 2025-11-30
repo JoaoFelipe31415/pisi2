@@ -2,7 +2,7 @@ import tsplib95
 import numpy as np
 import string
 
-def gerar_casos_berlin52(instancia_base, lista_num_pontos, tamanho_grid=50):
+def gerar_casos_testes_berlim52(instancia_base, lista_num_pontos, tamanho_grid=50):
     """
     Gera múltiplos arquivos de teste .txt a partir da instância berlin52.
     
@@ -55,20 +55,71 @@ def gerar_casos_berlin52(instancia_base, lista_num_pontos, tamanho_grid=50):
             for linha in matriz:
                 f.write(" ".join(linha) + "\n")
 
+def ler_brasil_58():
+
+    with open("edgesbrasil58.tsp", 'r') as objArq:
+        # Número de nós conhecido para este arquivo
+        n = 58
+
+        # Cria matriz completa (n x n) e preenche com zeros na diagonal
+        full = np.zeros((n, n), dtype=int)
+
+        # Cada linha i (1-indexed original) contém distâncias para j = i+1..n
+        for i in range(0, n - 1):
+            linha = objArq.readline()
+            if not linha:
+                raise ValueError(f"Arquivo 'edgesbrasil58.tsp' tem menos linhas que o esperado (esperado {n-1}).")
+            lista = linha.split()
+
+            # Preenche distâncias para (i, j) com j > i
+            for j in range(i + 1, n):
+                if len(lista) > 0:
+                    peso = int(lista.pop(0))
+                else:
+                    raise ValueError(f"Erro! linha {i+1} do arquivo não possui elementos suficientes para completar a linha.")
+                full[i, j] = peso
+                full[j, i] = peso
+
+    # Converte a matriz completa para vetor 1-D contendo apenas os elementos acima da diagonal
+    reduced = []
+    for i in range(n):
+        for j in range(i + 1, n):
+            reduced.append(full[i, j])
+
+    return np.array(reduced, dtype=int)
+
+def gerar_nome_pontos(num_pontos):
+    """Gera uma lista de nomes de pontos para o caso de teste."""
+    rotulos = list(string.ascii_uppercase)
+    dicionario_nomes = {}
+    for i in range(num_pontos):
+        dicionario_nomes[rotulos[i]] = i
+    return dicionario_nomes    
+
+def gerar_rotas(tamanho_rota, ponto_inicial='R'):
+    """Gera uma rota inicial fixa para testes."""
+    rotas = []
+    rotas.append(ponto_inicial)
+    rotulos = list(string.ascii_uppercase)
+    for i in range(tamanho_rota - 1):
+        rotas.append(rotulos[i])
+    return rotas
 
 # --- Bloco Principal de Execução ---
 if __name__ == "__main__":
     try:
         # Carrega a instância base uma única vez
-        problema_berlin52 = tsplib95.load('berlin52.tsp')
+        problema = tsplib95.load('berlin52.tsp')
         
         # Define quantos pontos cada caso de teste terá
         # O caso com 10 pontos já será perceptivelmente lento para a força bruta
-        pontos_para_testar = [6, 7, 8, 9, 10] 
+        pontos_para_testar = [6, 7, 8, 9, 10, 11 , 12, 13, 14, 15] 
         
-        gerar_casos_berlin52(problema_berlin52, pontos_para_testar,20)
+        gerar_casos_testes_berlim52(problema, pontos_para_testar,20)
         
-        print("\nTodos os casos de teste foram gerados.")
+        #print("\nTodos os casos de teste foram gerados.")
+
+        
 
     except Exception as e:
         print(f"Ocorreu um erro fatal: {e}")

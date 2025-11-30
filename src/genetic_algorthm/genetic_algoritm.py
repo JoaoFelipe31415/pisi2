@@ -58,7 +58,7 @@ def construir_matriz_distancias(coordenadas):
     dist_matrix = np.zeros((n, n))
 
     for i in range(n):
-        for j in range(i, n):
+        for j in range(i, n):              
             ponto1_nome = nomes_pontos[i]
             ponto2_nome = nomes_pontos[j]
             
