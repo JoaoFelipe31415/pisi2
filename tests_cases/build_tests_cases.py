@@ -57,7 +57,7 @@ def gerar_casos_testes_berlim52(instancia_base, lista_num_pontos, tamanho_grid=5
 
 def ler_brasil_58():
 
-    with open("edgesbrasil58.tsp", 'r') as objArq:
+    with open("/home/joao/Desktop/repositories/pisi2/tests_cases/edgesbrasil58.tsp", 'r') as objArq:
         # Número de nós conhecido para este arquivo
         n = 58
 
@@ -90,36 +90,40 @@ def ler_brasil_58():
 
 def gerar_nome_pontos(num_pontos):
     """Gera uma lista de nomes de pontos para o caso de teste."""
-    rotulos = list(string.ascii_uppercase)
+    rotulos = list(string.ascii_uppercase + string.ascii_lowercase + string.digits + "".join(['!','@','#','$','%','^','&','*','(',')']))
     dicionario_nomes = {}
     for i in range(num_pontos):
-        dicionario_nomes[rotulos[i]] = i
-    return dicionario_nomes    
+        dicionario_nomes[rotulos[i]] = i+1
+    if "R" not in dicionario_nomes:
+        dicionario_nomes["R"] = 0
+    return  list(dicionario_nomes.keys()) ,dicionario_nomes    
 
-def gerar_rotas(tamanho_rota, ponto_inicial='R'):
+def gerar_rota(tamanho_rota, ponto_inicial='R'):
     """Gera uma rota inicial fixa para testes."""
-    rotas = []
-    rotas.append(ponto_inicial)
+    rota = []
+    rota.append(ponto_inicial)
     rotulos = list(string.ascii_uppercase)
     for i in range(tamanho_rota - 1):
-        rotas.append(rotulos[i])
-    return rotas
+        if(rotulos[i] == ponto_inicial):
+            continue
+        rota.append(rotulos[i])
+    return rota
 
 # --- Bloco Principal de Execução ---
 if __name__ == "__main__":
     try:
         # Carrega a instância base uma única vez
-        problema = tsplib95.load('berlin52.tsp')
+        #problema = tsplib95.load('berlin52.tsp')
         
         # Define quantos pontos cada caso de teste terá
         # O caso com 10 pontos já será perceptivelmente lento para a força bruta
         pontos_para_testar = [6, 7, 8, 9, 10, 11 , 12, 13, 14, 15] 
         
-        gerar_casos_testes_berlim52(problema, pontos_para_testar,20)
+        #gerar_casos_testes_berlim52(problema, pontos_para_testar,20)
         
         #print("\nTodos os casos de teste foram gerados.")
 
-        
+        print(ler_brasil_58())
 
     except Exception as e:
         print(f"Ocorreu um erro fatal: {e}")
