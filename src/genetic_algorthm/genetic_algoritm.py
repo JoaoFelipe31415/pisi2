@@ -9,12 +9,12 @@ def ler_matriz_de_arquivo(nome_arquivo):
     caminho = os.path.join(os.path.dirname(__file__), '..','..', 'data', nome_arquivo)
     matriz = []
     with open(caminho, 'r') as f:
-        primeira_linha = f.readline()
+        primeira_linha = f.readline().split()
         M = int(primeira_linha[0])
         N = int(primeira_linha[1])
         
         for _ in range(M):
-            linha_arquivo = f.readline()
+            linha_arquivo = f.readline().split()
             aux = []
             for caracter in linha_arquivo:
                 if caracter == "\n":
@@ -73,6 +73,7 @@ def construir_matriz_distancias(coordenadas):
 
 def calcular_custo_rota(rota, dist_matrix, map_idx):
     """Calcula o custo total de uma rota usando a matriz de distâncias reduzida (apenas triângulo superior)."""
+    
     custo = 0
     n = len(map_idx)
     
@@ -100,11 +101,12 @@ def criar_populacao_inicial(nomes_pontos, tamanho_populacao):
     """Cria uma população inicial de rotas aleatórias."""
     populacao = []
     ponto_inicial = 'R' # Ponto de partida fixo para o FlyFood
+    ponto_destino = 'R' # Ponto de retorno fixo para o FlyFood
     outros_pontos = [p for p in nomes_pontos if p != ponto_inicial]
     
     for _ in range(tamanho_populacao):
         rota_aleatoria = random.sample(outros_pontos, len(outros_pontos))
-        individuo = [ponto_inicial] + rota_aleatoria
+        individuo = [ponto_inicial] + rota_aleatoria 
         populacao.append(individuo)
         
     return populacao
@@ -137,25 +139,39 @@ def selecao(pop_ranqueada, tamanho_elite):
 
 def cruzamento(pai1, pai2):
     """Gera um filho a partir de dois pais usando Ordered Crossover (OX1)."""
+    # Garante que a posição 0 (ponto de partida) é sempre 'R' e
+    # aplica o OX1 apenas nas posições [1..n-1].
     filho = [None] * len(pai1)
-    
+    filho[0] = 'R'
+
     inicio, fim = sorted(random.sample(range(1, len(pai1)), 2))
     segmento_pai1 = pai1[inicio:fim]
     
     filho[inicio:fim] = segmento_pai1
     
     ponteiro_pai2 = 0
-    for i in range(len(filho)):
+    # Preenche apenas posições a partir de 1 (não tocamos no índice 0 que é 'R')
+    for i in range(1, len(filho)):
         if filho[i] is None:
-            while pai2[ponteiro_pai2] in segmento_pai1:
+            # pula elementos do pai2 que estão no segmento herdado do pai1
+            # e pula também o ponto 'R' — não queremos duplicá-lo fora do índice 0
+            while ponteiro_pai2 < len(pai2) and (pai2[ponteiro_pai2] in segmento_pai1 or pai2[ponteiro_pai2] == 'R'):
                 ponteiro_pai2 += 1
-            filho[i] = pai2[ponteiro_pai2]
-            ponteiro_pai2 += 1
+            if ponteiro_pai2 < len(pai2):
+                filho[i] = pai2[ponteiro_pai2]
+                ponteiro_pai2 += 1
+            else:
+                # fallback seguro: preenche com um elemento válido encontrado na outra parentela
+                for v in pai1[1:]:
+                    if v not in filho:
+                        filho[i] = v
+                        break
             
     return filho
 
 def mutacao(individuo, taxa_mutacao):
     """Aplica uma mutação de troca (swap) em um indivíduo."""
+    # Nunca alteramos a posição 0, que é o ponto inicial fixo 'R'.
     for i in range(1, len(individuo)):
         if random.random() < taxa_mutacao:
             j = random.randint(1, len(individuo) - 1)
@@ -169,14 +185,23 @@ def proxima_geracao(populacao_atual, pop_ranqueada, tamanho_elite, taxa_mutacao)
     
     proxima_geracao = []
     
+    # Mantém elitismo mas copia explicitamente os indivíduos (para evitar aliasing)
     for i in range(tamanho_elite):
-        proxima_geracao.append(pool_de_pais[i])
+        elite_copy = pool_de_pais[i].copy()
+        # força garantia: o primeiro elemento deve ser 'R'
+        if len(elite_copy) > 0:
+            elite_copy[0] = 'R'
+        proxima_geracao.append(elite_copy)
     
     for i in range(tamanho_elite, len(pool_de_pais)):
         pai1 = random.choice(pool_de_pais)
         pai2 = random.choice(pool_de_pais)
         filho = cruzamento(pai1, pai2)
-        proxima_geracao.append(mutacao(filho, taxa_mutacao))
+        filho = mutacao(filho, taxa_mutacao)
+        # reforça invariantes: a rota sempre deve começar em 'R'
+        if len(filho) > 0:
+            filho[0] = 'R'
+        proxima_geracao.append(filho)
         
     return proxima_geracao
 
@@ -213,6 +238,7 @@ def resolver_flyfood_com_ag(nome_arquivo, geracoes, tam_pop, taxa_elite, taxa_mu
     # Passo 1: Usar as funções para carregar os dados
     _, _, matriz = ler_matriz_de_arquivo(nome_arquivo)
     coordenadas = encontrar_coordenadas(matriz)
+
     
     # Passo 2: Construir a matriz de distâncias
     dist_matrix_full, nomes_pontos, map_idx = construir_matriz_distancias(coordenadas)
@@ -220,6 +246,7 @@ def resolver_flyfood_com_ag(nome_arquivo, geracoes, tam_pop, taxa_elite, taxa_mu
     
     # Passo 3: Executar o AG
     populacao = criar_populacao_inicial(nomes_pontos, tam_pop)
+    
     
     melhor_distancia_inicial = calcular_custo_rota(populacao[0], dist_matrix, map_idx)
     print(f"Distância da melhor rota inicial: {melhor_distancia_inicial:.2f}")
@@ -249,6 +276,9 @@ def resolver_flyfood_com_ag(nome_arquivo, geracoes, tam_pop, taxa_elite, taxa_mu
 
 # EXECUÇÃO 
 if __name__ == "__main__":
+
+    valor = 12
+
     # Parâmetros do Algoritmo Genético
     GERACOES = 100
     TAMANHO_POPULACAO = 50
@@ -257,7 +287,7 @@ if __name__ == "__main__":
 
     # Executa a solução para o problema FlyFood
     resolver_flyfood_com_ag(
-        nome_arquivo="input.txt",
+        nome_arquivo=f"caso_teste_berlin52_{valor}pts.txt",
         geracoes=GERACOES,
         tam_pop=TAMANHO_POPULACAO,
         taxa_elite=TAXA_ELITE,
