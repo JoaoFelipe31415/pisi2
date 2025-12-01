@@ -5,7 +5,7 @@ def calcular_distancia_manhattan(coord1, coord2):
 
 def transformar_grid_em_tsplib(path_arquivo):
     coordenadas = {}
-    
+    pontos ={}
     with open(path_arquivo, 'r') as objArq:
         # Lê dimensões
         linha, coluna = map(int, objArq.readline().split())
@@ -20,8 +20,9 @@ def transformar_grid_em_tsplib(path_arquivo):
                 
                 if lista_valores[j] != '0':
                     coordenadas[id_ponto] = (i, j) # Salva (linha, coluna)
+                    pontos[id_ponto] = (lista_valores[j]) # Salva a demanda do ponto
                     id_ponto += 1
-    
+                    
     # Agora calculamos as distâncias APENAS entre os pontos que encontramos
     distancias = {}
     ids_encontrados = list(coordenadas.keys()) # Ex: [1, 2, 3, 4]
@@ -36,5 +37,5 @@ def transformar_grid_em_tsplib(path_arquivo):
             distancias[(id1, id2)] = dist
             distancias[(id2, id1)] = dist
             
-    return distancias, id_ponto - 1  
+    return distancias, id_ponto - 1 , pontos  # Retorna o dicionário de distâncias, quantidade de pontos e demandas
 

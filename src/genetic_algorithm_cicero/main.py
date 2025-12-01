@@ -28,8 +28,8 @@ def carregar_distancias_brasil58():
 
 def carregar_distancias(nome_arquivo):
     caminho = os.path.join(os.path.dirname(__file__), '..','..', 'data', nome_arquivo)
-    distancias, qtd_pontos = transformar_grid_em_tsplib(caminho)
-    return distancias, qtd_pontos
+    distancias, qtd_pontos, pontos = transformar_grid_em_tsplib(caminho)
+    return distancias, qtd_pontos, pontos
 
 #funcao que retorna o custo total do caminho:
 def custoCaminho(permutacao, dicDistancias):
@@ -197,61 +197,69 @@ def proxima_geracao(populacao_atual, pop_ranqueada, tamanho_elite, taxa_mutacao)
 # 3. LOOP PRINCIPAL (MAIN)
 # =============================================================================
 if __name__ == "__main__":
-    
-    dic_distancias,qtd_pontos = carregar_distancias("caso_teste_berlin52_12pts.txt")
-    #dic_distancias,qtd_pontos = carregar_distancias_brasil58()
-    # --- CONFIGURAÇÕES DO AGENTE ---
-    GERACOES = 10000       
-    TAM_POPULACAO = 50    
-    ELITE = 15             
-    TAXA_MUTACAO = 0.02   
-    NUM_CIDADES = qtd_pontos
-    
-    # 1. Carregar Mapa
-    
-    # 2. Criar População Inicial
-    print("Inicializando população...")
-    populacao = inicializaPopulacao(TAM_POPULACAO, NUM_CIDADES)
-    
-    melhor_custo_global = float('inf')
-    melhor_rota_global = []
-    
-    inicio_tempo = time.time()
-    
-    print(f"\n--- Iniciando Evolução por {GERACOES} gerações ---")
-    
-    for g in range(GERACOES):
-        # A. Ranquear
-        # Retorna lista de tuplas [(indice, fitness), ...]
-        ranking = ranquearPopulacao(populacao, dic_distancias)
-        
-        # B. Verificar o Melhor da Geração
-        idx_melhor_geracao = ranking[0][0]
-        # Recuperamos o custo convertendo o fitness de volta (1/fit) ou recalculando
-        custo_melhor_geracao = custoCaminho(populacao[idx_melhor_geracao], dic_distancias)
-        
-        # C. Atualizar Global Best
-        if custo_melhor_geracao < melhor_custo_global:
-            melhor_custo_global = custo_melhor_geracao
-            melhor_rota_global = populacao[idx_melhor_geracao].copy()
-            print(f"Gen {g}: Novo Recorde! Custo = {melhor_custo_global}")
-            
-        # D. Criar Próxima Geração
-        populacao = proxima_geracao(populacao, ranking, ELITE, TAXA_MUTACAO)
-        
-        # Log periódico
-        if g % 100 == 0:
-            print(f"Gen {g} | Melhor Atual: {melhor_custo_global}")
+	# attach stdout/stderr to a timestamped logfile inside the project-level logs/ folder
+	# the log will include everything that would normally be printed
+	from logging_utils import attach_streams_to_log
+	logs_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'logs'))
+	logfile = attach_streams_to_log(logs_dir=logs_dir, prefix="genetic_main")
+	# write a small header so the file is easy to identify
+	print("--- LOG START ---")
+	dic_distancias,qtd_pontos,pontos = carregar_distancias("caso_teste_berlin52_12pts.txt")
+	#dic_distancias,qtd_pontos = carregar_distancias_brasil58()
+	# --- CONFIGURAÇÕES DO AGENTE ---
+	GERACOES = 10000       
+	TAM_POPULACAO = 55
+	ELITE = 15           
+	TAXA_MUTACAO = 0.02
+	NUM_CIDADES = qtd_pontos
+	
+	# 1. Carregar Mapa
+	
+	# 2. Criar População Inicial
+	print("Inicializando população...")
+	populacao = inicializaPopulacao(TAM_POPULACAO, NUM_CIDADES)
+	
+	melhor_custo_global = float('inf')
+	melhor_rota_global = []
+	
+	inicio_tempo = time.time()
+	
+	print(f"\n--- Iniciando Evolução por {GERACOES} gerações ---")
 
-    fim_tempo = time.time()
+	for g in range(GERACOES):
+		# A. Ranquear
+		# Retorna lista de tuplas [(indice, fitness), ...]
+		ranking = ranquearPopulacao(populacao, dic_distancias)
+		
+		# B. Verificar o Melhor da Geração
+		idx_melhor_geracao = ranking[0][0]
+		# Recuperamos o custo convertendo o fitness de volta (1/fit) ou recalculando
+		custo_melhor_geracao = custoCaminho(populacao[idx_melhor_geracao], dic_distancias)
+		
+		# C. Atualizar Global Best
+		if custo_melhor_geracao < melhor_custo_global:
+			melhor_custo_global = custo_melhor_geracao
+			melhor_rota_global = populacao[idx_melhor_geracao].copy()
+			print(f"Gen {g}: Novo Recorde! Custo = {melhor_custo_global}")
+			
+		# D. Criar Próxima Geração
+		populacao = proxima_geracao(populacao, ranking, ELITE, TAXA_MUTACAO)
+		
+		# Log periódico
+		if g % 100 == 0:
+			print(f"Gen {g} | Melhor Atual: {melhor_custo_global}")
+
+	fim_tempo = time.time()
+	
+	print("\n==================================")
+	print("FIM DA EXECUÇÃO")
+	print(f"Tempo total: {fim_tempo - inicio_tempo:.2f} segundos")
+	print(f"Melhor Custo Encontrado: {melhor_custo_global}")
+	#print(f"Ótimo Conhecido (Referência): 25395")
+	print("==================================")
     
-    print("\n==================================")
-    print("FIM DA EXECUÇÃO")
-    print(f"Tempo total: {fim_tempo - inicio_tempo:.2f} segundos")
-    print(f"Melhor Custo Encontrado: {melhor_custo_global}")
-    print(f"Ótimo Conhecido (Referência): 25395")
-    print("==================================")
-    
-    # Validação Final da Rota
-    print("\nRota Final (Primeiros 10 pontos):", melhor_rota_global[:10], "...")
+	melhor_rota_global = [pontos[i] for i in melhor_rota_global]
+
+ 	# Validação Final da Rota
+	print("\nRota Final:", melhor_rota_global)
    
