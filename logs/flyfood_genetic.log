@@ -1,0 +1,113 @@
+--- LOG START ---
+Inicializando população...
+
+--- Iniciando Evolução por 10000 gerações ---
+Gen 0: Novo Recorde! Custo = 14
+Gen 0 | Melhor Atual: 14
+Gen 100 | Melhor Atual: 14
+Gen 200 | Melhor Atual: 14
+Gen 300 | Melhor Atual: 14
+Gen 400 | Melhor Atual: 14
+Gen 500 | Melhor Atual: 14
+Gen 600 | Melhor Atual: 14
+Gen 700 | Melhor Atual: 14
+Gen 800 | Melhor Atual: 14
+Gen 900 | Melhor Atual: 14
+Gen 1000 | Melhor Atual: 14
+Gen 1100 | Melhor Atual: 14
+Gen 1200 | Melhor Atual: 14
+Gen 1300 | Melhor Atual: 14
+Gen 1400 | Melhor Atual: 14
+Gen 1500 | Melhor Atual: 14
+Gen 1600 | Melhor Atual: 14
+Gen 1700 | Melhor Atual: 14
+Gen 1800 | Melhor Atual: 14
+Gen 1900 | Melhor Atual: 14
+Gen 2000 | Melhor Atual: 14
+Gen 2100 | Melhor Atual: 14
+Gen 2200 | Melhor Atual: 14
+Gen 2300 | Melhor Atual: 14
+Gen 2400 | Melhor Atual: 14
+Gen 2500 | Melhor Atual: 14
+Gen 2600 | Melhor Atual: 14
+Gen 2700 | Melhor Atual: 14
+Gen 2800 | Melhor Atual: 14
+Gen 2900 | Melhor Atual: 14
+Gen 3000 | Melhor Atual: 14
+Gen 3100 | Melhor Atual: 14
+Gen 3200 | Melhor Atual: 14
+Gen 3300 | Melhor Atual: 14
+Gen 3400 | Melhor Atual: 14
+Gen 3500 | Melhor Atual: 14
+Gen 3600 | Melhor Atual: 14
+Gen 3700 | Melhor Atual: 14
+Gen 3800 | Melhor Atual: 14
+Gen 3900 | Melhor Atual: 14
+Gen 4000 | Melhor Atual: 14
+Gen 4100 | Melhor Atual: 14
+Gen 4200 | Melhor Atual: 14
+Gen 4300 | Melhor Atual: 14
+Gen 4400 | Melhor Atual: 14
+Gen 4500 | Melhor Atual: 14
+Gen 4600 | Melhor Atual: 14
+Gen 4700 | Melhor Atual: 14
+Gen 4800 | Melhor Atual: 14
+Gen 4900 | Melhor Atual: 14
+Gen 5000 | Melhor Atual: 14
+Gen 5100 | Melhor Atual: 14
+Gen 5200 | Melhor Atual: 14
+Gen 5300 | Melhor Atual: 14
+Gen 5400 | Melhor Atual: 14
+Gen 5500 | Melhor Atual: 14
+Gen 5600 | Melhor Atual: 14
+Gen 5700 | Melhor Atual: 14
+Gen 5800 | Melhor Atual: 14
+Gen 5900 | Melhor Atual: 14
+Gen 6000 | Melhor Atual: 14
+Gen 6100 | Melhor Atual: 14
+Gen 6200 | Melhor Atual: 14
+Gen 6300 | Melhor Atual: 14
+Gen 6400 | Melhor Atual: 14
+Gen 6500 | Melhor Atual: 14
+Gen 6600 | Melhor Atual: 14
+Gen 6700 | Melhor Atual: 14
+Gen 6800 | Melhor Atual: 14
+Gen 6900 | Melhor Atual: 14
+Gen 7000 | Melhor Atual: 14
+Gen 7100 | Melhor Atual: 14
+Gen 7200 | Melhor Atual: 14
+Gen 7300 | Melhor Atual: 14
+Gen 7400 | Melhor Atual: 14
+Gen 7500 | Melhor Atual: 14
+Gen 7600 | Melhor Atual: 14
+Gen 7700 | Melhor Atual: 14
+Gen 7800 | Melhor Atual: 14
+Gen 7900 | Melhor Atual: 14
+Gen 8000 | Melhor Atual: 14
+Gen 8100 | Melhor Atual: 14
+Gen 8200 | Melhor Atual: 14
+Gen 8300 | Melhor Atual: 14
+Gen 8400 | Melhor Atual: 14
+Gen 8500 | Melhor Atual: 14
+Gen 8600 | Melhor Atual: 14
+Gen 8700 | Melhor Atual: 14
+Gen 8800 | Melhor Atual: 14
+Gen 8900 | Melhor Atual: 14
+Gen 9000 | Melhor Atual: 14
+Gen 9100 | Melhor Atual: 14
+Gen 9200 | Melhor Atual: 14
+Gen 9300 | Melhor Atual: 14
+Gen 9400 | Melhor Atual: 14
+Gen 9500 | Melhor Atual: 14
+Gen 9600 | Melhor Atual: 14
+Gen 9700 | Melhor Atual: 14
+Gen 9800 | Melhor Atual: 14
+Gen 9900 | Melhor Atual: 14
+
+==================================
+FIM DA EXECUÇÃO
+Tempo total: 4.71 segundos
+Melhor Custo Encontrado: 14
+==================================
+
+Rota Final: ['R', 'A', 'D', 'C', 'B']

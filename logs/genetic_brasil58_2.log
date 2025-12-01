@@ -1,0 +1,244 @@
+--- LOG START ---
+Inicializando população...
+
+--- Iniciando Evolução por 10000 gerações ---
+Gen 0: Novo Recorde! Custo = 106847
+Gen 0 | Melhor Atual: 106847
+Gen 1: Novo Recorde! Custo = 105429
+Gen 2: Novo Recorde! Custo = 102771
+Gen 3: Novo Recorde! Custo = 102077
+Gen 4: Novo Recorde! Custo = 99119
+Gen 5: Novo Recorde! Custo = 92081
+Gen 9: Novo Recorde! Custo = 89907
+Gen 11: Novo Recorde! Custo = 85442
+Gen 14: Novo Recorde! Custo = 85173
+Gen 18: Novo Recorde! Custo = 84540
+Gen 19: Novo Recorde! Custo = 82321
+Gen 20: Novo Recorde! Custo = 81071
+Gen 23: Novo Recorde! Custo = 80979
+Gen 25: Novo Recorde! Custo = 80703
+Gen 28: Novo Recorde! Custo = 73082
+Gen 29: Novo Recorde! Custo = 73049
+Gen 36: Novo Recorde! Custo = 72794
+Gen 39: Novo Recorde! Custo = 68828
+Gen 55: Novo Recorde! Custo = 68667
+Gen 57: Novo Recorde! Custo = 68250
+Gen 59: Novo Recorde! Custo = 66954
+Gen 61: Novo Recorde! Custo = 65898
+Gen 75: Novo Recorde! Custo = 64685
+Gen 80: Novo Recorde! Custo = 63021
+Gen 91: Novo Recorde! Custo = 62837
+Gen 92: Novo Recorde! Custo = 62568
+Gen 97: Novo Recorde! Custo = 62388
+Gen 98: Novo Recorde! Custo = 61846
+Gen 100 | Melhor Atual: 61846
+Gen 101: Novo Recorde! Custo = 61547
+Gen 103: Novo Recorde! Custo = 60409
+Gen 104: Novo Recorde! Custo = 60282
+Gen 105: Novo Recorde! Custo = 57453
+Gen 112: Novo Recorde! Custo = 54007
+Gen 121: Novo Recorde! Custo = 53853
+Gen 123: Novo Recorde! Custo = 53324
+Gen 131: Novo Recorde! Custo = 48915
+Gen 142: Novo Recorde! Custo = 48631
+Gen 145: Novo Recorde! Custo = 48438
+Gen 147: Novo Recorde! Custo = 48154
+Gen 158: Novo Recorde! Custo = 48038
+Gen 159: Novo Recorde! Custo = 47931
+Gen 161: Novo Recorde! Custo = 47715
+Gen 162: Novo Recorde! Custo = 46465
+Gen 173: Novo Recorde! Custo = 46442
+Gen 181: Novo Recorde! Custo = 45660
+Gen 183: Novo Recorde! Custo = 45572
+Gen 194: Novo Recorde! Custo = 43134
+Gen 200 | Melhor Atual: 43134
+Gen 207: Novo Recorde! Custo = 42895
+Gen 217: Novo Recorde! Custo = 42854
+Gen 227: Novo Recorde! Custo = 42709
+Gen 229: Novo Recorde! Custo = 42146
+Gen 231: Novo Recorde! Custo = 40508
+Gen 291: Novo Recorde! Custo = 40402
+Gen 297: Novo Recorde! Custo = 40310
+Gen 299: Novo Recorde! Custo = 40123
+Gen 300 | Melhor Atual: 40123
+Gen 302: Novo Recorde! Custo = 38984
+Gen 313: Novo Recorde! Custo = 38498
+Gen 400: Novo Recorde! Custo = 38427
+Gen 400 | Melhor Atual: 38427
+Gen 424: Novo Recorde! Custo = 38313
+Gen 468: Novo Recorde! Custo = 38303
+Gen 474: Novo Recorde! Custo = 38289
+Gen 491: Novo Recorde! Custo = 38228
+Gen 498: Novo Recorde! Custo = 37705
+Gen 500 | Melhor Atual: 37705
+Gen 534: Novo Recorde! Custo = 37609
+Gen 543: Novo Recorde! Custo = 36509
+Gen 600 | Melhor Atual: 36509
+Gen 601: Novo Recorde! Custo = 36239
+Gen 622: Novo Recorde! Custo = 36072
+Gen 651: Novo Recorde! Custo = 35980
+Gen 654: Novo Recorde! Custo = 35933
+Gen 676: Novo Recorde! Custo = 35813
+Gen 687: Novo Recorde! Custo = 35664
+Gen 692: Novo Recorde! Custo = 35369
+Gen 695: Novo Recorde! Custo = 35181
+Gen 700 | Melhor Atual: 35181
+Gen 724: Novo Recorde! Custo = 35100
+Gen 771: Novo Recorde! Custo = 35005
+Gen 777: Novo Recorde! Custo = 34970
+Gen 798: Novo Recorde! Custo = 34815
+Gen 800 | Melhor Atual: 34815
+Gen 809: Novo Recorde! Custo = 34452
+Gen 821: Novo Recorde! Custo = 34424
+Gen 826: Novo Recorde! Custo = 34384
+Gen 835: Novo Recorde! Custo = 33906
+Gen 852: Novo Recorde! Custo = 33710
+Gen 873: Novo Recorde! Custo = 33594
+Gen 897: Novo Recorde! Custo = 33397
+Gen 900 | Melhor Atual: 33397
+Gen 904: Novo Recorde! Custo = 33095
+Gen 907: Novo Recorde! Custo = 32979
+Gen 918: Novo Recorde! Custo = 32782
+Gen 927: Novo Recorde! Custo = 32003
+Gen 982: Novo Recorde! Custo = 31772
+Gen 984: Novo Recorde! Custo = 31500
+Gen 1000 | Melhor Atual: 31500
+Gen 1100 | Melhor Atual: 31500
+Gen 1200 | Melhor Atual: 31500
+Gen 1201: Novo Recorde! Custo = 31275
+Gen 1206: Novo Recorde! Custo = 31010
+Gen 1231: Novo Recorde! Custo = 30868
+Gen 1300 | Melhor Atual: 30868
+Gen 1315: Novo Recorde! Custo = 30755
+Gen 1345: Novo Recorde! Custo = 30707
+Gen 1350: Novo Recorde! Custo = 30666
+Gen 1351: Novo Recorde! Custo = 30307
+Gen 1400 | Melhor Atual: 30307
+Gen 1431: Novo Recorde! Custo = 30186
+Gen 1466: Novo Recorde! Custo = 29969
+Gen 1500 | Melhor Atual: 29969
+Gen 1564: Novo Recorde! Custo = 29959
+Gen 1572: Novo Recorde! Custo = 29816
+Gen 1596: Novo Recorde! Custo = 29773
+Gen 1600 | Melhor Atual: 29773
+Gen 1616: Novo Recorde! Custo = 29761
+Gen 1624: Novo Recorde! Custo = 29708
+Gen 1632: Novo Recorde! Custo = 29619
+Gen 1651: Novo Recorde! Custo = 29576
+Gen 1652: Novo Recorde! Custo = 29505
+Gen 1669: Novo Recorde! Custo = 29334
+Gen 1673: Novo Recorde! Custo = 29137
+Gen 1700 | Melhor Atual: 29137
+Gen 1766: Novo Recorde! Custo = 29075
+Gen 1800 | Melhor Atual: 29075
+Gen 1819: Novo Recorde! Custo = 29039
+Gen 1823: Novo Recorde! Custo = 29038
+Gen 1842: Novo Recorde! Custo = 29012
+Gen 1866: Novo Recorde! Custo = 28993
+Gen 1872: Novo Recorde! Custo = 28787
+Gen 1900 | Melhor Atual: 28787
+Gen 1932: Novo Recorde! Custo = 28770
+Gen 2000 | Melhor Atual: 28770
+Gen 2067: Novo Recorde! Custo = 28760
+Gen 2100 | Melhor Atual: 28760
+Gen 2153: Novo Recorde! Custo = 28724
+Gen 2184: Novo Recorde! Custo = 28663
+Gen 2200 | Melhor Atual: 28663
+Gen 2212: Novo Recorde! Custo = 28600
+Gen 2279: Novo Recorde! Custo = 28405
+Gen 2300 | Melhor Atual: 28405
+Gen 2400 | Melhor Atual: 28405
+Gen 2500 | Melhor Atual: 28405
+Gen 2556: Novo Recorde! Custo = 28060
+Gen 2600 | Melhor Atual: 28060
+Gen 2700 | Melhor Atual: 28060
+Gen 2800 | Melhor Atual: 28060
+Gen 2900 | Melhor Atual: 28060
+Gen 3000 | Melhor Atual: 28060
+Gen 3100 | Melhor Atual: 28060
+Gen 3169: Novo Recorde! Custo = 27998
+Gen 3200 | Melhor Atual: 27998
+Gen 3206: Novo Recorde! Custo = 27931
+Gen 3300 | Melhor Atual: 27931
+Gen 3400 | Melhor Atual: 27931
+Gen 3500 | Melhor Atual: 27931
+Gen 3600 | Melhor Atual: 27931
+Gen 3700 | Melhor Atual: 27931
+Gen 3800 | Melhor Atual: 27931
+Gen 3900 | Melhor Atual: 27931
+Gen 3903: Novo Recorde! Custo = 27927
+Gen 3945: Novo Recorde! Custo = 27918
+Gen 4000 | Melhor Atual: 27918
+Gen 4100 | Melhor Atual: 27918
+Gen 4200 | Melhor Atual: 27918
+Gen 4291: Novo Recorde! Custo = 27917
+Gen 4300 | Melhor Atual: 27917
+Gen 4400 | Melhor Atual: 27917
+Gen 4401: Novo Recorde! Custo = 27756
+Gen 4500 | Melhor Atual: 27756
+Gen 4600 | Melhor Atual: 27756
+Gen 4700 | Melhor Atual: 27756
+Gen 4800 | Melhor Atual: 27756
+Gen 4900 | Melhor Atual: 27756
+Gen 5000 | Melhor Atual: 27756
+Gen 5100 | Melhor Atual: 27756
+Gen 5200 | Melhor Atual: 27756
+Gen 5300 | Melhor Atual: 27756
+Gen 5400 | Melhor Atual: 27756
+Gen 5500 | Melhor Atual: 27756
+Gen 5600 | Melhor Atual: 27756
+Gen 5700 | Melhor Atual: 27756
+Gen 5800 | Melhor Atual: 27756
+Gen 5900 | Melhor Atual: 27756
+Gen 6000 | Melhor Atual: 27756
+Gen 6100 | Melhor Atual: 27756
+Gen 6200 | Melhor Atual: 27756
+Gen 6300 | Melhor Atual: 27756
+Gen 6400 | Melhor Atual: 27756
+Gen 6500 | Melhor Atual: 27756
+Gen 6600 | Melhor Atual: 27756
+Gen 6700 | Melhor Atual: 27756
+Gen 6800 | Melhor Atual: 27756
+Gen 6900 | Melhor Atual: 27756
+Gen 7000 | Melhor Atual: 27756
+Gen 7100 | Melhor Atual: 27756
+Gen 7200 | Melhor Atual: 27756
+Gen 7300 | Melhor Atual: 27756
+Gen 7400 | Melhor Atual: 27756
+Gen 7500 | Melhor Atual: 27756
+Gen 7600 | Melhor Atual: 27756
+Gen 7700 | Melhor Atual: 27756
+Gen 7727: Novo Recorde! Custo = 27734
+Gen 7800 | Melhor Atual: 27734
+Gen 7900 | Melhor Atual: 27734
+Gen 8000 | Melhor Atual: 27734
+Gen 8100 | Melhor Atual: 27734
+Gen 8200 | Melhor Atual: 27734
+Gen 8300 | Melhor Atual: 27734
+Gen 8400 | Melhor Atual: 27734
+Gen 8442: Novo Recorde! Custo = 27654
+Gen 8445: Novo Recorde! Custo = 27637
+Gen 8500 | Melhor Atual: 27637
+Gen 8600 | Melhor Atual: 27637
+Gen 8700 | Melhor Atual: 27637
+Gen 8800 | Melhor Atual: 27637
+Gen 8900 | Melhor Atual: 27637
+Gen 9000 | Melhor Atual: 27637
+Gen 9100 | Melhor Atual: 27637
+Gen 9200 | Melhor Atual: 27637
+Gen 9300 | Melhor Atual: 27637
+Gen 9400 | Melhor Atual: 27637
+Gen 9500 | Melhor Atual: 27637
+Gen 9600 | Melhor Atual: 27637
+Gen 9700 | Melhor Atual: 27637
+Gen 9800 | Melhor Atual: 27637
+Gen 9900 | Melhor Atual: 27637
+
+==================================
+FIM DA EXECUÇÃO
+Tempo total: 32.48 segundos
+Melhor Custo Encontrado: 27637
+Ótimo Conhecido (Referência): 25395
+==================================
+
+Rota Final (Primeiros 10 pontos): [42, 38, 7, 31, 11, 39, 21, 29, 36, 17] ...
